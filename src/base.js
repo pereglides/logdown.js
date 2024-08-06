@@ -128,7 +128,7 @@ module.exports = function () {
           }
 
           if (this.state.isEnabled) {
-            if (loggerMethods.indexOf(method) >= loggerMethods.indexOf(this.state.loglevel)) {
+            if (loggerMethods.indexOf(method) >= loggerMethods.indexOf(this.state.logLevel)) {
               var preparedOutput = this._prepareOutput(args, method)
               logger[method].apply(logger, preparedOutput)
             }
