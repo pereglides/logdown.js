@@ -66,7 +66,8 @@ module.exports = function () {
 
   Logdown._getInitialState = function (opts) {
     return {
-      isEnabled: Logdown._getEnableState(opts)
+      isEnabled: Logdown._getEnableState(opts),
+      logLevel: 'debug'
     }
   }
 
@@ -127,8 +128,10 @@ module.exports = function () {
           }
 
           if (this.state.isEnabled) {
-            var preparedOutput = this._prepareOutput(args, method)
-            logger[method].apply(logger, preparedOutput)
+            if (loggerMethods.indexOf(method) >= loggerMethods.indexOf(this.state.loglevel)) {
+              var preparedOutput = this._prepareOutput(args, method)
+              logger[method].apply(logger, preparedOutput)
+            }
           }
         }
       })
