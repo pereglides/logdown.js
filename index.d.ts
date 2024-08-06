@@ -1,7 +1,7 @@
 declare function logdown(prefix: string, opts?: logdown.LogdownOptions): logdown.Logger;
 
 declare namespace logdown {
-  type LoggerState = { isEnabled: boolean };
+  type LoggerState = { isEnabled: boolean, logLevel: 'trace' | 'debug' | 'log' | 'info' | 'warn' | 'error' };
   type TransportFunction = (options: TransportOptions) => void;
 
   interface LogdownOptions {
